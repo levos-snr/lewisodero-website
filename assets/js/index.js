@@ -7,7 +7,7 @@ $(document).ready(function () {
 	const heroTabsContainer = document.getElementById("hero-tabs-container");
 
 	// On tab click
-	$(".et-hero-tab").click(function (event) {
+	$(".hero-tab").click(function (event) {
 		event.preventDefault();
 		let targetElement = $($(this).attr("href"));
 		if (targetElement.length) {
@@ -31,14 +31,14 @@ $(document).ready(function () {
 
 	// Check tab container position
 	function checkTabContainerPosition() {
-		let tabsOffset = $(".et-hero-tabs-container").offset();
+		let tabsOffset = $(".hero-container").offset();
 		if (!tabsOffset) return;
 
 		let offset = tabsOffset.top - tabContainerHeight;
 		if ($(window).scrollTop() > offset) {
-			$(".et-hero-tabs-container").addClass("et-hero-tabs-container--top");
+			$(".hero-container").addClass("hero-container--top");
 		} else {
-			$(".et-hero-tabs-container").removeClass("et-hero-tabs-container--top");
+			$(".hero-container").removeClass("hero-container--top");
 		}
 	}
 
@@ -47,7 +47,7 @@ $(document).ready(function () {
 		let newCurrentId = null;
 		let newCurrentTab = null;
 
-		$(".et-hero-tab").each(function () {
+		$(".hero-tab").each(function () {
 			let id = $(this).attr("href");
 			let targetElement = $(id);
 			if (targetElement.length) {
@@ -79,22 +79,21 @@ $(document).ready(function () {
 		let left = 0;
 		if (currentTab) {
 			width = currentTab.outerWidth(); // Use outerWidth to include padding/borders if any
-			left =
-				currentTab.offset().left - $(".et-hero-tabs-container").offset().left;
+			left = currentTab.offset().left - $(".hero-container").offset().left;
 		}
-		$(".et-hero-tab-slider").css("width", width);
-		$(".et-hero-tab-slider").css("left", left);
+		$(".hero-tab-slider").css("width", width);
+		$(".hero-tab-slider").css("left", left);
 	}
 
-	// Code to detect scroll direction and toggle the et-hero-tabs-container--top class
+	// Code to detect scroll direction and toggle the hero-container--top class
 	window.addEventListener("scroll", () => {
 		let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 		if (scrollTop > lastScrollTop) {
 			// Scrolling down
-			heroTabsContainer.classList.add("et-hero-tabs-container--top");
+			heroTabsContainer.classList.add("hero-container--top");
 		} else {
 			// Scrolling up
-			heroTabsContainer.classList.remove("et-hero-tabs-container--top");
+			heroTabsContainer.classList.remove("hero-container--top");
 		}
 		lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
 	});
@@ -103,7 +102,7 @@ $(document).ready(function () {
 
 	let message;
 
-	let buttons = document.getElementsByClassName("app-form-button");
+	let buttons = document.getElementsByClassName("contact-form-button");
 	for (let button of buttons) {
 		button.addEventListener("click", function () {
 			alert(

@@ -6,7 +6,7 @@
 		overflow-x: hidden;
 	}
 	header {
-		margin-top: 25em;
+		margin-top: 3em;
 	}
 
 	.nav-left {
@@ -76,7 +76,7 @@
 		overflow: visible;
 	}
 
-	.et-main .slide1 {
+	.tab-main .slide1 {
 		margin-top: 3rem;
 		margin-top: 30rem;
 		height: 25vh;
@@ -103,7 +103,7 @@
 		margin-top: 35rem;
 	}
 
-	.screen-contact {
+	.contact-me {
 		position: relative;
 		background: var(--primary-color);
 		border-radius: 15px;
@@ -111,7 +111,7 @@
 		flex-direction: column;
 	}
 
-	.screen-body {
+	.contact-body {
 		display: flex;
 		flex-direction: column;
 	}
@@ -128,18 +128,13 @@
 		padding: 10px;
 	}
 
-   .et-hero-tabs-container{
-    display: none;
-   }
-
-}
-
-@media screen and (max-width: 390px){
-    .nav-right {
+	.hero-container {
 		display: none;
 	}
-    .about-grid {
-		margin-top: 10em;
-	}
+}
 
+@media screen and (max-width: 390px) {
+	.nav-right {
+		display: none;
+	}
 }
