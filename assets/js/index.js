@@ -78,7 +78,8 @@ $(document).ready(function () {
 		let width = 0;
 		let left = 0;
 		if (currentTab) {
-			width = currentTab.outerWidth(); // Use outerWidth to include padding/borders if any
+			// Use outerWidth to include padding/borders if any
+			width = currentTab.outerWidth();
 			left = currentTab.offset().left - $(".hero-container").offset().left;
 		}
 		$(".hero-tab-slider").css("width", width);
@@ -95,7 +96,8 @@ $(document).ready(function () {
 			// Scrolling up
 			heroTabsContainer.classList.remove("hero-container--top");
 		}
-		lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+		// For Mobile or negative scrolling
+		lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 	});
 
 	// email
