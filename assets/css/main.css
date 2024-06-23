@@ -369,7 +369,7 @@ main {
 	align-items: center;
 	justify-content: center;
 	position: absolute;
-	bottom: 10%;
+	bottom: -20%;
 }
 
 .container-project {
