@@ -20,7 +20,7 @@
 ---
 ## 🚨 About this repo (please read!)
 
-The design of this website is inspired by various sources, but I assure you that every piece of code was written from scratch. Unlike other projects, this portfolio was built using unique technologies `like HTML`, `CSS`, `JavaScript`, and `jQuery`. While it may look similar to some designs, the code, functionality, and overall structure are completely original and reflect significant personal effort and innovation.
+The design of this website is inspired by various sources, but I assure you that every piece of code was written from scratch. Unlike other projects, this portfolio was built using unique technologies like `HTML`, `CSS`, and  `JavaScript`. While it may look similar to some designs, the code, functionality, and overall structure are completely original and reflect significant personal effort and innovation.
 
 ---
 ### Table of Contents
@@ -40,7 +40,7 @@ The design of this website is inspired by various sources, but I assure you that
 
 ## Description
 
-This portfolio is more than just a static website. It includes dynamic elements and animations powered by jQuery to enhance the user experience. The navigation tabs, smooth scrolling, and interactive bubbles are just a few examples of the custom features implemented to make the site engaging and user-friendly.
+This portfolio is more than just a static website. It includes dynamic elements and animations powered by js to enhance the user experience. The navigation tabs, smooth scrolling, and interactive bubbles are just a few examples of the custom features implemented to make the site engaging and user-friendly.
 
 ---
 
