@@ -1,29 +1,33 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
 	let currentId = null;
 	let currentTab = null;
 	let tabContainerHeight = 70;
-
 	let lastScrollTop = 0;
 	const heroTabsContainer = document.getElementById("hero-tabs-container");
 
 	// On tab click
-	$(".hero-tab").click(function (event) {
-		event.preventDefault();
-		let targetElement = $($(this).attr("href"));
-		if (targetElement.length) {
-			let scrollTop = targetElement.offset().top - tabContainerHeight + 1;
-			$("html, body").animate({ scrollTop: scrollTop }, 600);
-		}
+	document.querySelectorAll(".hero-tab").forEach(function (tab) {
+		tab.addEventListener("click", function (event) {
+			event.preventDefault();
+			let targetElement = document.querySelector(this.getAttribute("href"));
+			if (targetElement) {
+				let scrollTop = targetElement.offsetTop - tabContainerHeight + 1;
+				window.scrollTo({
+					top: scrollTop,
+					behavior: "smooth",
+				});
+			}
+		});
 	});
 
 	// On window scroll
-	$(window).scroll(function () {
+	window.addEventListener("scroll", function () {
 		checkTabContainerPosition();
 		findCurrentTabSelector();
 	});
 
 	// On window resize
-	$(window).resize(function () {
+	window.addEventListener("resize", function () {
 		if (currentId) {
 			setSliderCss();
 		}
@@ -31,14 +35,15 @@ $(document).ready(function () {
 
 	// Check tab container position
 	function checkTabContainerPosition() {
-		let tabsOffset = $(".hero-container").offset();
-		if (!tabsOffset) return;
-
-		let offset = tabsOffset.top - tabContainerHeight;
-		if ($(window).scrollTop() > offset) {
-			$(".hero-container").addClass("hero-container--top");
+		let tabsOffset = document.querySelector(".hero-container").offsetTop;
+		if (window.scrollY > tabsOffset - tabContainerHeight) {
+			document
+				.querySelector(".hero-container")
+				.classList.add("hero-container--top");
 		} else {
-			$(".hero-container").removeClass("hero-container--top");
+			document
+				.querySelector(".hero-container")
+				.classList.remove("hero-container--top");
 		}
 	}
 
@@ -47,21 +52,18 @@ $(document).ready(function () {
 		let newCurrentId = null;
 		let newCurrentTab = null;
 
-		$(".hero-tab").each(function () {
-			let id = $(this).attr("href");
-			let targetElement = $(id);
-			if (targetElement.length) {
-				let offsetTop = targetElement.offset().top - tabContainerHeight;
+		document.querySelectorAll(".hero-tab").forEach(function (tab) {
+			let id = tab.getAttribute("href");
+			let targetElement = document.querySelector(id);
+			if (targetElement) {
+				let offsetTop = targetElement.offsetTop - tabContainerHeight;
 				let offsetBottom =
-					targetElement.offset().top +
-					targetElement.height() -
+					targetElement.offsetTop +
+					targetElement.offsetHeight -
 					tabContainerHeight;
-				if (
-					$(window).scrollTop() > offsetTop &&
-					$(window).scrollTop() < offsetBottom
-				) {
+				if (window.scrollY > offsetTop && window.scrollY < offsetBottom) {
 					newCurrentId = id;
-					newCurrentTab = $(this);
+					newCurrentTab = tab;
 				}
 			}
 		});
@@ -78,16 +80,18 @@ $(document).ready(function () {
 		let width = 0;
 		let left = 0;
 		if (currentTab) {
-			// Use outerWidth to include padding/borders if any
-			width = currentTab.outerWidth();
-			left = currentTab.offset().left - $(".hero-container").offset().left;
+			let rect = currentTab.getBoundingClientRect();
+			width = rect.width;
+			left =
+				rect.left -
+				document.querySelector(".hero-container").getBoundingClientRect().left;
 		}
-		$(".hero-tab-slider").css("width", width);
-		$(".hero-tab-slider").css("left", left);
+		document.querySelector(".hero-tab-slider").style.width = `${width}px`;
+		document.querySelector(".hero-tab-slider").style.left = `${left}px`;
 	}
 
 	// Code to detect scroll direction and toggle the hero-container--top class
-	window.addEventListener("scroll", () => {
+	window.addEventListener("scroll", function () {
 		let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 		if (scrollTop > lastScrollTop) {
 			// Scrolling down
@@ -101,8 +105,6 @@ $(document).ready(function () {
 	});
 
 	// email
-
-	let message;
 
 	let buttons = document.getElementsByClassName("contact-form-button");
 	for (let button of buttons) {
