@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	// Generate 128 bubbles with random styles
-	for (var i = 0; i < 128; i++) {
+	for (let i = 0; i < 128; i++) {
 		const bubble = document.createElement("div");
 		bubble.className = "bubble";
 		bubble.style.setProperty("--size", `${2 + Math.random() * 4}rem`);
